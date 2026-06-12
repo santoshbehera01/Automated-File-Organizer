@@ -1,0 +1,2 @@
+# Automated File Organizer uses only Python 3 standard library.
+# No external dependencies are required.
