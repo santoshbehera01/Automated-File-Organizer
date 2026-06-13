@@ -1,66 +1,211 @@
 # User Manual — Automated File Organizer
 
-## 1. Installation
+## 1. Introduction
 
-1. Install Python 3.8 or newer from <https://www.python.org/downloads/>.
-2. Download or clone this repository.
-3. No additional packages are required.
+Welcome to **Automated File Organizer**.
 
-## 2. Launching the App
+This application helps users automatically organize files into categorized folders, making file management faster, cleaner, and more efficient. The software provides an easy-to-use graphical interface for organizing files, viewing statistics, and monitoring activity logs.
 
-Open a terminal in the project folder and run:
+---
+
+## 2. System Requirements
+
+- Python 3.8 or higher
+- Windows, Linux, or macOS
+- Minimum 4 GB RAM recommended
+- Standard Python installation with Tkinter support
+
+No external libraries are required.
+
+---
+
+## 3. Launching the Application
+
+1. Open the project folder.
+2. Open a terminal or command prompt.
+3. Run the following command:
 
 ```bash
 python main.py
 ```
 
-The main window opens with the **Dashboard** page visible.
+The application will open on the **Dashboard** page.
 
-## 3. Using the Organizer
+---
 
-1. Click **Organizer** in the top navigation bar.
-2. Click **Browse Folder** to choose the folder you want to clean.
-3. The selected path appears below the folder icon.
-4. Click **Organize Now**.
-5. Confirm the action in the dialog.
-6. When the run finishes, a summary appears in the "Run summary" card.
+## 4. Application Modules
 
-Files are moved into subfolders named **Images**, **Documents**, **Videos**,
-**Audio**, **Archives**, and **Others** — created automatically when needed.
-If a file with the same name already exists at the destination, a numeric
-suffix (e.g. `report (1).pdf`) is added to avoid overwriting.
+### 4.1 Dashboard
 
-## 4. Viewing Statistics
+The Dashboard provides an overview of the application, including:
 
-Click **Statistics** in the top navigation to see:
+- Total organization activities
+- Recently organized files
+- Quick statistics
+- System status information
 
-- Total files scanned (all-time)
-- Files organized
-- Folders created
-- Skipped files
-- Errors
-- Last run timestamp
-- A table of every previous run
+---
 
-## 5. Logs
+### 4.2 Organizer
 
-Click **Logs** to view the contents of `logs/organizer.log`. Each entry
-contains a timestamp, filename, destination, and status. You can:
+The Organizer is the main feature of the application.
 
-- **Refresh** — reload the file from disk.
-- **Clear Logs** — wipe the log file (asks for confirmation).
+#### Steps to Organize Files
 
-## 6. Troubleshooting
+1. Navigate to the **Organizer** page.
+2. Click **Browse Folder**.
+3. Select the folder you want to organize.
+4. Verify the selected folder path.
+5. Click **Organize Now**.
+6. Wait for the process to complete.
+7. Review the organization summary.
 
-| Problem                                | Solution                                                                 |
-| -------------------------------------- | ------------------------------------------------------------------------ |
-| "Please select a valid folder"         | The path no longer exists — pick a new folder.                           |
-| "You do not have permission…"          | Run the app as a user that can read/write the target folder.             |
-| "The selected folder has no files…"    | Pick a folder that actually contains files (subfolders are ignored).     |
-| The window looks too small             | Drag the corner to resize; the layout is fully responsive.               |
-| Nothing happens after clicking Browse  | The dialog may be behind another window — check your taskbar.            |
+The application automatically creates category folders when required.
 
-## 7. Conclusion
+#### Supported Categories
 
-You now know everything you need to keep your folders tidy with Automated
-File Organizer. Happy organizing!
+| Category | Example File Types |
+|-----------|-------------------|
+| Images | .jpg, .png, .gif |
+| Documents | .pdf, .docx, .txt |
+| Videos | .mp4, .mkv, .avi |
+| Audio | .mp3, .wav |
+| Archives | .zip, .rar |
+| Others | Unrecognized file types |
+
+---
+
+### 4.3 Statistics
+
+The Statistics page displays:
+
+- Total files processed
+- Total files organized
+- Number of folders created
+- Error count
+- Previous organization records
+- Overall activity summary
+
+This section helps users monitor organization performance over time.
+
+---
+
+### 4.4 Logs
+
+The Logs page displays detailed activity records stored in:
+
+```text
+logs/organizer.log
+```
+
+Available actions:
+
+- Refresh Logs
+- View recent activities
+- Clear log records (with confirmation)
+
+Each log entry contains information about file operations and system events.
+
+---
+
+### 4.5 About
+
+The About page provides:
+
+- Project information
+- Technology details
+- Application version
+- Developer information
+
+---
+
+## 5. Data Storage
+
+The application automatically stores data in the following files:
+
+### History Data
+
+```text
+data/history.json
+```
+
+Stores records of previous organization sessions.
+
+### Settings Data
+
+```text
+data/settings.json
+```
+
+Stores user preferences and the last selected folder.
+
+### Activity Logs
+
+```text
+logs/organizer.log
+```
+
+Stores operation logs and error information.
+
+---
+
+## 6. File Organization Process
+
+When the organization process starts:
+
+1. The selected folder is scanned.
+2. Each file is analyzed based on its extension.
+3. The appropriate category folder is identified.
+4. Missing folders are created automatically.
+5. Files are moved into their respective folders.
+6. History and logs are updated.
+7. Statistics are refreshed.
+
+Duplicate filenames are automatically renamed to prevent overwriting existing files.
+
+Example:
+
+```text
+report.pdf
+report (1).pdf
+report (2).pdf
+```
+
+---
+
+## 7. Troubleshooting
+
+| Problem | Solution |
+|----------|----------|
+| Invalid folder selected | Choose an existing folder. |
+| Folder contains no files | Select a folder with files to organize. |
+| Permission denied | Run the application with appropriate access permissions. |
+| Files are not moving | Verify that files are not being used by another application. |
+| Application does not start | Ensure Python 3.8+ and Tkinter are installed correctly. |
+| Log file is empty | Perform an organization task and refresh the Logs page. |
+
+---
+
+## 8. Best Practices
+
+- Organize folders regularly.
+- Review logs after large operations.
+- Keep backup copies of important files.
+- Verify selected folders before starting organization.
+- Avoid organizing system directories.
+
+---
+
+## 9. Support
+
+For technical details and project architecture, refer to:
+
+```text
+documentation/PROJECT_DOC.md
+```
+
+---
+
+## 10. Conclusion
+
+Automated File Organizer provides a simple and efficient way to manage files through automated categorization, activity tracking, and statistical reporting. The application is designed to improve productivity while maintaining a clean and organized file system.
