@@ -1,99 +1,149 @@
 # Project Documentation — Automated File Organizer
 
-## 1. Introduction
+## 1. Project Overview
 
-Automated File Organizer is a desktop application that helps users keep their
-folders tidy by automatically sorting files into categorized subfolders. It is
-written in Python 3 using only the standard library (Tkinter for the UI), so
-it runs out of the box on Windows, macOS, and Linux.
+**Automated File Organizer** is a desktop application developed using Python and Tkinter that automatically organizes files into categorized folders based on their file extensions. The application helps users maintain a clean and structured directory by reducing manual file management tasks.
+
+The project demonstrates practical concepts of file handling, GUI development, logging, data persistence, and software design using only Python's standard library.
+
+---
 
 ## 2. Objectives
 
-- Eliminate the manual work of sorting files by extension.
-- Provide a modern, distraction-free desktop interface.
-- Keep a transparent audit trail of every operation.
-- Run without third-party dependencies.
+- Automate file organization and folder management.
+- Improve productivity by reducing manual sorting efforts.
+- Provide a simple and user-friendly desktop interface.
+- Maintain organization history and activity logs.
+- Demonstrate clean, modular, and maintainable Python development.
 
-## 3. Architecture
+---
 
-The application follows a simple three-layer architecture:
+## 3. System Architecture
 
+The application follows a layered architecture consisting of presentation, processing, and storage components.
+
+```text
+┌──────────────────────────────────────────────┐
+│                User Interface                │
+│      Dashboard • Organizer • Statistics      │
+│             Logs • About Pages               │
+└──────────────────────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────┐
+│             Processing Layer                 │
+│  File Classification • Validation • Sorting │
+│  Statistics Generation • Logging Management │
+└──────────────────────────────────────────────┘
+                      │
+                      ▼
+┌──────────────────────────────────────────────┐
+│               Data Storage                   │
+│ history.json • settings.json • organizer.log│
+└──────────────────────────────────────────────┘
 ```
-┌───────────────────────────────────────────────┐
-│            Presentation Layer                 │
-│  Tkinter pages: Dashboard / Organizer /       │
-│  Statistics / Logs / About                    │
-└───────────────────────────────────────────────┘
-                  │
-┌───────────────────────────────────────────────┐
-│            Application Layer                  │
-│  organize_folder(), category_for(),           │
-│  unique_destination(), aggregate_stats()      │
-└───────────────────────────────────────────────┘
-                  │
-┌───────────────────────────────────────────────┐
-│             Persistence Layer                 │
-│  data/history.json, data/settings.json,       │
-│  logs/organizer.log                           │
-└───────────────────────────────────────────────┘
+
+---
+
+## 4. Core Features
+
+| Feature | Description |
+|----------|-------------|
+| Dashboard | Displays organization statistics and activity summary |
+| File Organizer | Automatically sorts files into categorized folders |
+| Statistics | Shows organization insights and file distribution |
+| Activity Logs | Maintains detailed operation logs |
+| History Tracking | Stores previous organization records |
+| Duplicate Handling | Prevents file overwriting through auto-renaming |
+| Settings Storage | Remembers user preferences and last used folder |
+| Error Handling | Gracefully handles invalid folders and file errors |
+
+---
+
+## 5. Working Procedure
+
+1. Launch the application using `python main.py`.
+2. Navigate to the **Organizer** page.
+3. Select the target folder using the file browser.
+4. Click **Organize Now**.
+5. The application scans all files in the selected directory.
+6. Files are categorized according to their extensions.
+7. Category folders are created automatically if they do not exist.
+8. Files are moved safely to their respective folders.
+9. Activity logs and organization history are updated.
+10. Dashboard and Statistics pages reflect the latest results.
+
+---
+
+## 6. Data Management
+
+### History Storage
+
+```text
+data/history.json
 ```
 
-All logic lives in a single `main.py` for portability.
+Stores records of previous organization operations.
 
-## 4. Features
+### Settings Storage
 
-- File classification by extension into six categories.
-- Automatic creation of missing destination folders.
-- Duplicate-safe moves (`name (1).ext`, `name (2).ext`, …).
-- Persistent history (last 100 runs).
-- Persistent settings (remembers the last folder).
-- Full activity log written through the `logging` module.
-- Modern dark UI with top navigation and dashboard cards.
+```text
+data/settings.json
+```
 
-## 5. Workflow
+Stores application preferences and recently used folder information.
 
-1. User opens the app and navigates to **Organizer**.
-2. User selects a folder via the system dialog.
-3. User clicks **Organize Now**.
-4. `organize_folder()` iterates over every file in the folder:
-   - Determines its category using the extension.
-   - Ensures the destination subfolder exists.
-   - Moves the file with a duplicate-safe filename.
-   - Logs the operation.
-5. A run summary is stored in `data/history.json` and shown in the UI.
+### Activity Logs
 
-## 6. Technologies
+```text
+logs/organizer.log
+```
 
-| Concern        | Library / Tool      |
-| -------------- | ------------------- |
-| UI             | tkinter, ttk        |
-| File I/O       | pathlib, shutil, os |
-| Persistence    | json                |
-| Logging        | logging             |
-| Date / Time    | datetime            |
+Maintains detailed logs of file movement and system events.
 
-## 7. Error Handling
+---
 
-The app gracefully handles:
+## 7. Technologies Used
 
-- **Invalid folder** — shown via a `messagebox.showerror`.
-- **Empty folder** — informational dialog, no operation performed.
-- **Permission errors** — caught per file; logged and reported.
-- **Duplicate filenames** — destination is auto-renamed to avoid overwriting.
-- **Generic file move failures** — caught, logged, and counted as errors.
+| Component | Technology |
+|-----------|------------|
+| Programming Language | Python 3 |
+| GUI Framework | Tkinter |
+| Data Storage | JSON |
+| Logging | Python logging module |
+| File Management | pathlib, shutil, os |
+| Date & Time | datetime |
+| IDE | Visual Studio Code |
+| Version Control | Git & GitHub |
 
-## 8. Future Enhancements
+---
 
-- Drag-and-drop folder selection.
-- Custom user-defined categories.
-- Scheduled background runs.
-- Undo last run.
-- Export reports.
-- Light theme.
+## 8. Error Handling
 
-## 9. Conclusion
+The application includes robust exception handling mechanisms:
 
-Automated File Organizer demonstrates that a polished, useful desktop
-application can be built with nothing more than Python's standard library.
-It is small, dependency-free, easy to extend, and immediately useful for
-anyone who deals with messy folders.
+- Invalid folder selection detection
+- Empty folder validation
+- File permission error handling
+- Duplicate filename resolution
+- File movement failure recovery
+- JSON read/write exception handling
+- User-friendly error messages through dialog boxes
+
+---
+
+## 9. Future Enhancements
+
+- Drag-and-drop folder selection
+- Custom file organization rules
+- Scheduled automatic organization
+- Undo last organization operation
+- CSV and PDF report generation
+- Dark and Light theme switching
+- Advanced file filtering options
+
+---
+
+## 10. Conclusion
+
+The Automated File Organizer successfully demonstrates the use of Python for building a practical desktop productivity application. Through automated file classification, persistent storage, logging, and an intuitive graphical interface, the project provides an efficient solution for managing unorganized directories while showcasing key software engineering concepts and best practices.
