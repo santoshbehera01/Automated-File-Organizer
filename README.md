@@ -30,7 +30,7 @@ The application features a user-friendly dashboard, activity logging, history tr
 - Automatic file organization by file type
 - Modern desktop GUI using Tkinter
 - Dashboard with organization statistics
-- Folder browsing and one-click organization
+- Folder browsing and one click organization
 - Activity logging system
 - Organization history tracking
 - Duplicate filename handling
