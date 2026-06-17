@@ -165,7 +165,7 @@ This project demonstrates:
 - Logging Systems
 - Error Handling
 - Software Documentation
-- Git & GitHub Workflow
+
 
 ---
 
