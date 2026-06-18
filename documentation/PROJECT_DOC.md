@@ -140,7 +140,7 @@ The application includes robust exception handling mechanisms:
 - Undo last organization operation
 - CSV and PDF report generation
 - Dark and Light theme switching
-- Advanced file filtering options
+
 
 ---
 
