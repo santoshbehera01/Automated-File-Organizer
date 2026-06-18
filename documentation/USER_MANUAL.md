@@ -112,7 +112,7 @@ Each log entry contains information about file operations and system events.
 
 The About page provides:
 
-- Project information
+
 - Technology details
 - Application version
 - Developer information
