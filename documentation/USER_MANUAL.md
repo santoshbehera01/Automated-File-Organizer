@@ -110,7 +110,7 @@ Each log entry contains information about file operations and system events.
 
 ### 4.5 About
 
-The About page provides
+The About page provides:
 
 - Project information
 - Technology details
