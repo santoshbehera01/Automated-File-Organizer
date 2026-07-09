@@ -146,4 +146,4 @@ The application includes robust exception handling mechanisms:
 
 ## 10. Conclusion
 
-The Automated File Organizer successfully demonstrates the use of Python for building a practical desktop productivity application. Through automated file classification, persistent storage, logging, and an intuitive graphical interface, the project provides an efficient solution for managing unorganized directories while showcasing key software engineering concepts and best practices.
+The Automated File Organizer successfully demonstrates the use of Python for building a practical desktop productivity application. Through automated file classification, persistent storage, logging, and an intuitive graphical interface, the project provides an efficient solution for managing unorganized directories while showcasing key software engineering concepts and best practices..
